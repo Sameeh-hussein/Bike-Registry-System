@@ -1,5 +1,6 @@
 package com.globonatics.Bike.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -12,8 +13,8 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class Bike {
     @Id
     @NonNull
@@ -24,8 +25,20 @@ public class Bike {
     private String phone;
     private String model;
     private String serialNumber;
-    private BigDecimal purchasePrice;
+    private Long purchasePrice;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM-DD-YYYY")
     private Date purchaseDate;
     @NonNull
     private boolean contact;
+
+    public Bike(long id, boolean contact, String email, String model, String name, String phone, Date purchaseDate, long purchasePrice) {
+        this.id = id;
+        this.contact = contact;
+        this.email = email;
+        this.model = model;
+        this.name = name;
+        this.phone = phone;
+        this.purchaseDate = purchaseDate;
+        this.purchasePrice = purchasePrice;
+    }
 }
