@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { BikeService } from "../../services/bike.service";
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import {Observable, throwError} from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -30,4 +31,37 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
   }
+
+  submitRegistration() {
+    if(this.bikeform.valid) {
+      this.validMessage = "Your bike registration has been submitted. Thank you!";
+      this.bikeService.createBikeRegistration(this.bikeform.value).subscribe(
+        data => {
+          this.bikeform.reset();
+          return true;
+        },
+        error => {
+          return throwError(error);
+        }
+      )
+    } else {
+      this.validMessage = "Please fill out the form before submitting!";
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

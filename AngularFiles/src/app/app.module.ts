@@ -7,17 +7,21 @@ import { BikeService } from './services/bike.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminComponent } from './component/admin/admin.component';
 import { HomeComponent } from './component/home/home.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import { ViewRegistrationComponent } from './component/view-registration/view-registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    HomeComponent
+    HomeComponent,
+    ViewRegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [BikeService],
   bootstrap: [AppComponent]

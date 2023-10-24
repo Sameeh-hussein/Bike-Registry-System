@@ -16,6 +16,7 @@ export class AdminComponent {
   }
 
   getBikes(){
+    // @ts-ignore
     this.bikeService.getBikes().subscribe(
       data => (this.bikes = data),
       err => console.error(err),

@@ -11,7 +11,8 @@ const httpOption = {
 export class BikeService {
 
   constructor(private http:HttpClient) { }
-  getBikes(): Observable<any> {
+
+  getBikes(id: number) {
     return this.http.get('/server/api/v1/bikes');
   }
 
